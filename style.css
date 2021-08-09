@@ -1,0 +1,145 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,html{overflow-x:hidden;}
+
+body{
+    font-font: sans-serif;
+    background-color: #333;
+}
+.container{
+    background-color: #fafafa;
+    width: 100vw;
+    padding: 50px;
+    min-height: 100vh;
+    transform-origin: top left;
+    transition: transform 0.5s ease-in 0.1s;
+}
+.container.show-nav{
+    transform: rotate(-20deg);
+}
+
+.circle{
+    background-color: #ff7979;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: relative;
+    transition: transform 0.5s ease-in 0.1s;
+}
+
+.container.show-nav .circle{
+    transform: rotate(-70deg);
+}
+
+.circle button{
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: white;
+    background-color: transparent;
+    height: 100px;
+    font-size: 25px;
+    border: 0;
+}
+
+.circle-container{
+    position: fixed;
+    top: -100px;
+    left: -100px;
+}
+
+.circle button#open{
+    left: 60%;
+}
+
+.circle button#close{
+    top: 60%;
+    /*  绕着左上角旋转90°  */
+    transform-origin: top left;
+    transform: rotate(90deg);
+}
+
+.content{
+    max-width: 1000px;
+    /* 边距： 上下50px 左右居中 */
+    margin: 50px auto;
+}
+
+.content p{
+    color: #333333;
+    line-height: 1.5;
+}
+
+.content small{
+    color: #555;
+    font-style: italic;
+}
+
+.content h3{
+    margin: 25px 0;
+}
+
+.content img{
+    max-width: 100%;
+}
+
+/* 加号表示：container 和 nav 是兄弟关系，但是下面的样式只对 nav 起作用 */
+.container.show-nav + nav li{
+    /* li 从向左偏移 到 回到原位 */
+    transform: translate(0);
+    transition-delay: 0.3s;
+    transition: transform 0.5s ease-in 0.2s;
+}
+
+nav {
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+}
+
+
+nav ul{
+    list-style-type: none;
+    padding-left: 30px;
+}
+
+nav ul li i{
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+nav ul li{
+    text-transform: uppercase;
+    margin: 40px 0;
+    color: white;
+    transform: translateX(-100%);
+    /* 动画加在 li 上面 */
+    transition: transform 0.5s ease-in 0.1s;
+}
+
+nav li:nth-child(2){
+    margin-left: 15px;
+    transform: translateX(-150%);
+}
+
+nav li:nth-child(3){
+    margin-left: 30px;
+    transform: translateX(-200%);
+}
+
+nav a{
+    color: #fafafa;
+    text-decoration: none;
+    transition: all 0.5s;
+}
+
+/*:hover在鼠标移到链接上时添加的特殊样式*/
+nav a:hover{
+    color: #FF7979;
+    font-weight: bold;
+}
